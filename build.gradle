@@ -72,6 +72,8 @@ dependencies {
 
 	constraints {
 		implementation("org.springframework:spring-webmvc:6.2.0")
+		implementation("ch.qos.logback:logback-core:1.5.25")
+		implementation("ch.qos.logback:logback-classic:1.5.25")
 	}
 
 }
