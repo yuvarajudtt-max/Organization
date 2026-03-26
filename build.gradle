@@ -1,0 +1,67 @@
+plugins {
+	id 'org.springframework.boot' version '3.5.0'
+	id 'io.spring.dependency-management' version '1.1.7'
+	id 'java'
+}
+
+group = 'com.dtt'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	springCloudVersion = "2024.0.1"
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+dependencies {
+
+	implementation('org.springframework.boot:spring-boot-starter-web') {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+	}
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-undertow'
+
+	implementation 'org.springframework.kafka:spring-kafka'
+
+	implementation 'org.postgresql:postgresql:42.7.3'
+
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	implementation 'org.springframework.cloud:spring-cloud-starter-vault-config'
+	implementation 'org.springframework.vault:spring-vault-core'
+
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+
+	implementation 'org.apache.httpcomponents.client5:httpclient5'
+
+	implementation 'org.apache.commons:commons-lang3:3.18.0'
+	implementation 'commons-fileupload:commons-fileupload:1.6.0'
+	implementation 'commons-io:commons-io:2.15.1'
+
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.6'
+
+	implementation 'io.sentry:sentry:7.14.0'
+
+	implementation files('DAESLogIntegrity.jar')
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
