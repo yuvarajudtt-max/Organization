@@ -70,6 +70,10 @@ dependencies {
 	implementation files('DAESLogIntegrity.jar')
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
+	constraints {
+		implementation("org.springframework:spring-webmvc:6.2.0")
+	}
+
 }
 
 tasks.named('test') {
